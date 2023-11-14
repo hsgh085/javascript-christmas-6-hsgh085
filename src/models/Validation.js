@@ -41,6 +41,12 @@ class Validation {
     }
   }
 
+  static validateOnlyBeverageMenu(categoryCount) {
+    if (Validation.isOnlyBeverageMenu(categoryCount)) {
+      throw new InputError(ERROR_MESSAGE.BEVERAGE);
+    }
+  }
+
   static isIntegerInRange(date) {
     return Number.isInteger(date) && date >= DATE.MIN && date <= DATE.MAX;
   }
@@ -59,6 +65,12 @@ class Validation {
 
   static isNaturalMenuCount(countArray) {
     return countArray.every((count) => numberUtils.isNaturalNumber(count));
+  }
+
+  static isOnlyBeverageMenu(categoryCount) {
+    return !Object.keys(categoryCount).some(
+      (category) => category !== 'BEVERAGE' && categoryCount[category] !== 0,
+    );
   }
 }
 export default Validation;

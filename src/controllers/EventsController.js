@@ -7,7 +7,7 @@ import OutputView from '../views/OutputView';
 class EventsController {
   #date;
 
-  #menu;
+  #categoryCount = {};
 
   #events;
 
@@ -16,11 +16,10 @@ class EventsController {
     const date = await InputView.readDate();
     this.#date = new VisitDate(date);
     const [menuArray, countArray] = await InputView.readOrderMenu();
-    this.#menu = new Menu(menuArray, countArray);
-  }
-
-  async guideEventCaution() {
-    Validation.validateMenuTotalCount(this.#menu.getTotalCount());
+    const menu = new Menu(menuArray, countArray);
+    Validation.validateMenuTotalCount(menu.getTotalCount());
+    this.#categoryCount = menu.getCountMenuByCategory();
+    Validation.validateOnlyBeverageMenu(this.#categoryCount);
   }
 }
 export default EventsController;
