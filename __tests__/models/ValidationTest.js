@@ -66,4 +66,12 @@ describe('Validation 모델 테스트', () => {
       );
     },
   );
+
+  test('주문 메뉴의 총 개수가 20개를 초과한다면 에러가 발생한다', () => {
+    //given
+    const count = 21;
+
+    //then
+    expect(() => Validation.validateMenuTotalCount(count)).toThrow('[ERROR]');
+  });
 });
