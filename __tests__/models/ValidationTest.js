@@ -56,4 +56,14 @@ describe('Validation 모델 테스트', () => {
       },
     );
   });
+
+  test.each([['양송이수프-'], ['양송이수프1'], ['양송이수프~1']])(
+    '주문 형식이 올바르지 않다면 에러가 발생한다',
+    () => {
+      //then
+      expect((order) => Validation.validateOrderFormat(order)).toThrow(
+        '[ERROR]',
+      );
+    },
+  );
 });
