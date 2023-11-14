@@ -1,3 +1,4 @@
+import { MENU_CATEGORY } from '../constants/Constraints';
 import Validation from './Validation';
 
 class Menu {
@@ -15,8 +16,23 @@ class Menu {
     return this.#menu;
   }
 
-  getTotalCount(){
+  getTotalCount() {
     return Object.values(this.#menu).reduce((acc, cur) => acc + cur);
+  }
+
+  getCountMenuByCategory() {
+    const categoryCount = {};
+    Object.keys(MENU_CATEGORY).forEach((category) => {
+      const categoryMenu = MENU_CATEGORY[category];
+      let categoryTotal = 0;
+      categoryMenu.forEach((menuName) => {
+        if (this.#menu[menuName]) {
+          categoryTotal += this.#menu[menuName];
+        }
+      });
+      categoryCount[category] = categoryTotal;
+    });
+    return categoryCount;
   }
 }
 export default Menu;
