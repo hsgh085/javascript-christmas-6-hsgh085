@@ -1,4 +1,4 @@
-import { MENU_CATEGORY } from '../constants/Constraints';
+import { MENU_CATEGORY, MENU_PRICE } from '../constants/Constraints';
 import Validation from './Validation';
 
 class Menu {
@@ -33,6 +33,14 @@ class Menu {
       categoryCount[category] = categoryTotal;
     });
     return categoryCount;
+  }
+
+  getTotalPrice() {
+    let totalPrice = 0;
+    Object.entries(this.#menu).forEach(([menuName, count]) => {
+      totalPrice += MENU_PRICE[menuName] * count;
+    });
+    return totalPrice;
   }
 }
 export default Menu;

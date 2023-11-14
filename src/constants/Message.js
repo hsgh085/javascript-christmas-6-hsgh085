@@ -5,6 +5,16 @@ const INPUT_MESSAGE = Object.freeze({
 
 const OUTPUT_MESSAGE = Object.freeze({
   INTRO: '안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.',
+  PREVIEW: '우테코 식당에서 받을 이벤트 혜택 미리 보기!',
+  MENU: {
+    ORDER: '\n<주문 메뉴>',
+    GIFT: '\n<증정 메뉴>',
+  },
+  PRICE: {
+    BEFORE: '\n<할인 전 총주문 금액>\n',
+    BENEFIT: '\n<총혜택 금액>',
+    AFTER: '\n<할인 후 예상 결제 금액>',
+  },
 });
 
 export { INPUT_MESSAGE, OUTPUT_MESSAGE };

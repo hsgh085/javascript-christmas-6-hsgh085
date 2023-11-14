@@ -7,6 +7,8 @@ import OutputView from '../views/OutputView';
 class EventsController {
   #date;
 
+  #menu;
+
   #categoryCount = {};
 
   #events;
@@ -15,6 +17,12 @@ class EventsController {
     OutputView.printIntro();
     await this.inputVisitDate();
     await this.inputOrderMenu();
+  }
+
+  showOrder() {
+    OutputView.printEventPreview(this.#date.getDate());
+    OutputView.printMenu(this.#menu.getMenu());
+    OutputView.printPriceBefore(this.#menu.getTotalPrice());
   }
 
   async inputVisitDate() {
@@ -30,9 +38,9 @@ class EventsController {
   async inputOrderMenu() {
     const [menuArray, countArray] = await InputView.readOrderMenu();
     try {
-      const menu = new Menu(menuArray, countArray);
-      Validation.validateMenuTotalCount(menu.getTotalCount());
-      this.#categoryCount = menu.getCountMenuByCategory();
+      this.#menu = new Menu(menuArray, countArray);
+      Validation.validateMenuTotalCount(this.#menu.getTotalCount());
+      this.#categoryCount = this.#menu.getCountMenuByCategory();
       Validation.validateOnlyBeverageMenu(this.#categoryCount);
     } catch (err) {
       OutputView.printErrorMessage(err.message);
