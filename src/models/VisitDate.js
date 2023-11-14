@@ -3,7 +3,7 @@ import ERROR_MESSAGE from '../constants/ErrorMessage';
 import InputError from '../error/InputError';
 import numberUtils from '../utils/numberUtils';
 
-class Date {
+class VisitDate {
   #date;
 
   constructor(date) {
@@ -24,4 +24,4 @@ class Date {
     );
   }
 }
-export default Date;
+export default VisitDate;
