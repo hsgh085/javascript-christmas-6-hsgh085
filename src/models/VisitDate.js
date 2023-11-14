@@ -4,7 +4,12 @@ class VisitDate {
   #date;
 
   constructor(date) {
-    this.#date = Validation.validateDate(date);
+    Validation.validateDate(date);
+    this.#date = date;
+  }
+
+  getDate() {
+    return this.#date;
   }
 }
 export default VisitDate;
