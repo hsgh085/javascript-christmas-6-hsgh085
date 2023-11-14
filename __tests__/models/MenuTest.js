@@ -30,4 +30,13 @@ describe('Menu 모델 테스트', () => {
     //then
     expect(menu.getCountMenuByCategory()).toEqual(result);
   });
+
+  test('주문 메뉴의 총 가격을 반환한다', () => {
+    const menuArray = ['양송이수프', '타파스', '제로콜라'];
+    const countArray = [2, 3, 4];
+    //when
+    const menu = new Menu(menuArray, countArray);
+    //then
+    expect(menu.getTotalPrice()).toBe(40500);
+  });
 });
