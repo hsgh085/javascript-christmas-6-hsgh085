@@ -28,6 +28,13 @@ class Validation {
     }
   }
 
+  static validateOrderFormat(order) {
+    const pattern = /^[^\d]+-.+$/u;
+    if (!pattern.test(order)) {
+      throw new InputError(ERROR_MESSAGE.MENU);
+    }
+  }
+
   static isIntegerInRange(date) {
     return Number.isInteger(date) && date >= DATE.MIN && date <= DATE.MAX;
   }
