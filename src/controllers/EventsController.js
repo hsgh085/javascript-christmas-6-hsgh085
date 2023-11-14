@@ -13,13 +13,31 @@ class EventsController {
 
   async order() {
     OutputView.printIntro();
+    await this.inputVisitDate();
+    await this.inputOrderMenu();
+  }
+
+  async inputVisitDate() {
     const date = await InputView.readDate();
-    this.#date = new VisitDate(date);
+    try {
+      this.#date = new VisitDate(date);
+    } catch (err) {
+      OutputView.printErrorMessage(err.message);
+      await this.inputVisitDate();
+    }
+  }
+
+  async inputOrderMenu() {
     const [menuArray, countArray] = await InputView.readOrderMenu();
-    const menu = new Menu(menuArray, countArray);
-    Validation.validateMenuTotalCount(menu.getTotalCount());
-    this.#categoryCount = menu.getCountMenuByCategory();
-    Validation.validateOnlyBeverageMenu(this.#categoryCount);
+    try {
+      const menu = new Menu(menuArray, countArray);
+      Validation.validateMenuTotalCount(menu.getTotalCount());
+      this.#categoryCount = menu.getCountMenuByCategory();
+      Validation.validateOnlyBeverageMenu(this.#categoryCount);
+    } catch (err) {
+      OutputView.printErrorMessage(err.message);
+      await this.inputOrderMenu();
+    }
   }
 }
 export default EventsController;

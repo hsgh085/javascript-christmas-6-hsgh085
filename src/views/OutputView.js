@@ -6,6 +6,10 @@ const OutputView = {
     Console.print(OUTPUT_MESSAGE.INTRO);
   },
 
+  printErrorMessage(message) {
+    Console.print(message);
+  },
+
   printMenu() {
     Console.print('<주문 메뉴>');
     // ...
