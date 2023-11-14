@@ -25,7 +25,7 @@ describe('Validation 모델 테스트', () => {
       const menuArray = ['양송이수프', '치킨'];
 
       //then
-      expect(() => Validation.validMenuName(menuArray)).toThrow('[ERROR]');
+      expect(() => Validation.validateMenuName(menuArray)).toThrow('[ERROR]');
     });
 
     test('주문 메뉴가 중복되면 에러가 발생한다', () => {
@@ -33,7 +33,27 @@ describe('Validation 모델 테스트', () => {
       const menuArray = ['양송이수프', '제로콜라', '양송이수프'];
 
       //then
-      expect(() => Validation.validMenuName(menuArray)).toThrow('[ERROR]');
+      expect(() => Validation.validateMenuName(menuArray)).toThrow('[ERROR]');
     });
+  });
+
+  describe('주문 메뉴 개수 검증 테스트', () => {
+    test('주문 메뉴 개수가 숫자가 아니라면 에러가 발생한다', () => {
+      //given
+      const countArray = ['1개'];
+
+      //then
+      expect(() => Validation.validateMenuCount(countArray)).toThrow('[ERROR]');
+    });
+
+    test.each([[['0']], [['1.5']]])(
+      '주문 메뉴 개수가 자연수가 아니라면 에러가 발생한다',
+      (countArray) => {
+        //then
+        expect(() => Validation.validateMenuCount(countArray)).toThrow(
+          '[ERROR]',
+        );
+      },
+    );
   });
 });
