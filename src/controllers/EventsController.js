@@ -3,12 +3,12 @@ import VisitDate from '../models/VisitDate';
 import InputView from '../views/InputView';
 import OutputView from '../views/OutputView';
 
-class EventController {
+class EventsController {
   #date;
 
   #menu;
 
-  #event;
+  #events;
 
   async order() {
     OutputView.printIntro();
@@ -16,6 +16,7 @@ class EventController {
     this.#date = new VisitDate(date);
     const [menuArray, countArray] = InputView.readOrderMenu();
     this.#menu = new Menu(menuArray, countArray);
+
   }
 }
-export default EventController;
+export default EventsController;

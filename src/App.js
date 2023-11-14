@@ -1,11 +1,11 @@
-import EventController from './controllers/EventController';
+import EventsController from './controllers/EventsController';
 
 class App {
-  #eventController;
+  #eventsController;
 
   async run() {
-    this.#eventController = new EventController();
-    await this.#eventController.order();
+    this.#eventsController = new EventsController();
+    await this.#eventsController.order();
   }
 }
 
