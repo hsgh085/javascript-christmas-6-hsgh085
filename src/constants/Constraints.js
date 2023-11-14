@@ -28,4 +28,8 @@ const MENU_CATEGORY = Object.freeze({
   BEVERAGE: ['제로콜라', '레드와인', '샴페인'],
 });
 
-export { DATE, MENU_PRICE, MENU_CATEGORY };
+const MENU = Object.freeze({
+  TOTAL_COUNT: 20,
+});
+
+export { DATE, MENU_PRICE, MENU_CATEGORY, MENU };

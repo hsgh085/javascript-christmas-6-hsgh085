@@ -1,4 +1,4 @@
-import { DATE, MENU_PRICE } from '../constants/Constraints';
+import { DATE, MENU, MENU_PRICE } from '../constants/Constraints';
 import ERROR_MESSAGE from '../constants/ErrorMessage';
 import InputError from '../error/InputError';
 import numberUtils from '../utils/numberUtils';
@@ -32,6 +32,12 @@ class Validation {
     const pattern = /^[^\d]+-.+$/u;
     if (!pattern.test(order)) {
       throw new InputError(ERROR_MESSAGE.MENU);
+    }
+  }
+
+  static validateMenuTotalCount(count) {
+    if (count > MENU.TOTAL_COUNT) {
+      throw new InputError(ERROR_MESSAGE.TOTAL_COUNT);
     }
   }
 

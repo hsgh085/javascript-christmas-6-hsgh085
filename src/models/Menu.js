@@ -14,5 +14,9 @@ class Menu {
   getMenu() {
     return this.#menu;
   }
+
+  getTotalCount(){
+    return Object.values(this.#menu).reduce((acc, cur) => acc + cur);
+  }
 }
 export default Menu;

@@ -6,6 +6,7 @@ class App {
   async run() {
     this.#eventsController = new EventsController();
     await this.#eventsController.order();
+    await this.#eventsController.guideEventCaution();
   }
 }
 
