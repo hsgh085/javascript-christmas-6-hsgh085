@@ -4,7 +4,8 @@ class Menu {
   #menu = {};
 
   constructor(menuArray, countArray) {
-    Validation.validMenuName(menuArray);
+    Validation.validateMenuName(menuArray);
+    Validation.validateMenuCount(countArray);
     for (let i = 0; i < menuArray.length; i += 1) {
       this.#menu[menuArray[i]] = Number(countArray[i]);
     }

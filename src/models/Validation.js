@@ -10,10 +10,19 @@ class Validation {
     }
   }
 
-  static validMenuName(menuArray) {
+  static validateMenuName(menuArray) {
     if (
       !Validation.isMenuNameExist(menuArray) ||
       Validation.isDuplicateMenuName(menuArray)
+    ) {
+      throw new InputError(ERROR_MESSAGE.MENU);
+    }
+  }
+
+  static validateMenuCount(countArray) {
+    if (
+      !Validation.isNumberMenuCount(countArray) ||
+      !Validation.isNaturalMenuCount(countArray)
     ) {
       throw new InputError(ERROR_MESSAGE.MENU);
     }
@@ -29,6 +38,14 @@ class Validation {
 
   static isDuplicateMenuName(menuArray) {
     return new Set(menuArray).size !== menuArray.length;
+  }
+
+  static isNumberMenuCount(countArray) {
+    return countArray.every((count) => numberUtils.isNumber(count));
+  }
+
+  static isNaturalMenuCount(countArray) {
+    return countArray.every((count) => numberUtils.isNaturalNumber(count));
   }
 }
 export default Validation;
