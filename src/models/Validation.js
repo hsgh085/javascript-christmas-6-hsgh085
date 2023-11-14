@@ -5,7 +5,7 @@ import numberUtils from '../utils/numberUtils';
 
 class Validation {
   static validateDate(date) {
-    if (!numberUtils.isNumber(date) || !Validation.isIntegerInRange()) {
+    if (!numberUtils.isNumber(date) || !Validation.isIntegerInRange(date)) {
       throw new InputError(ERROR_MESSAGE.DATE);
     }
   }
@@ -48,7 +48,12 @@ class Validation {
   }
 
   static isIntegerInRange(date) {
-    return Number.isInteger(date) && date >= DATE.MIN && date <= DATE.MAX;
+    const numberDate = Number(date);
+    return (
+      Number.isInteger(numberDate) &&
+      numberDate >= DATE.MIN &&
+      numberDate <= DATE.MAX
+    );
   }
 
   static isMenuNameExist(menuArray) {
