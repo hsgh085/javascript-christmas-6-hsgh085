@@ -41,5 +41,11 @@ class Events {
     }
     this.#eventsPrice.weekend = count * PRICE.WEEKEND_DISCOUNT;
   }
+
+  applySpecialEvent() {
+    this.#eventsPrice.special = PRICE.SPECIAL_DISCOUNT;
+  }
+
+
 }
 export default Events;

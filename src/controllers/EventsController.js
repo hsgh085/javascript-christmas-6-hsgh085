@@ -29,6 +29,7 @@ class EventsController {
     if (!this.#events.isApplyEvent()) return;
     this.#events.applyGiftEvent();
     this.applyWeekOrWeekendEvent();
+    this.applySpecialEvent();
   }
 
   showEventsApplyDetails() {
@@ -72,6 +73,12 @@ class EventsController {
         'weekend',
         this.#menu.getCountCategory('MAIN'),
       );
+    }
+  }
+
+  applySpecialEvent() {
+    if (this.#date.isSpecialDate()) {
+      this.#events.applySpecialEvent();
     }
   }
 }
