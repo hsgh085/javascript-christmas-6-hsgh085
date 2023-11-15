@@ -35,7 +35,7 @@ class EventsController {
 
   showEventsApplyDetails() {
     OutputView.printGiftMenu(this.#events.getGiftCount());
-    OutputView.printBenefitDetails(this.#events.getEventsPrice());
+    OutputView.printBenefitDetails(this.#events.getEventsDiscount());
   }
 
   async inputVisitDate() {

@@ -3,11 +3,11 @@ import { DATE, PRICE } from '../constants/Constraints';
 class Events {
   #totalPrice;
 
-  #eventsPrice;
+  #eventsDiscount;
 
   constructor(totalPrice) {
     this.#totalPrice = totalPrice;
-    this.#eventsPrice = {
+    this.#eventsDiscount = {
       christmas: 0,
       weekday: 0,
       weekend: 0,
@@ -16,12 +16,12 @@ class Events {
     };
   }
 
-  getEventsPrice() {
-    return this.#eventsPrice;
+  getEventsDiscount() {
+    return this.#eventsDiscount;
   }
 
   getGiftCount() {
-    return this.#eventsPrice.gift / PRICE.GIFT_DISCOUNT;
+    return this.#eventsDiscount.gift / PRICE.GIFT_DISCOUNT;
   }
 
   isApplyEvent() {
@@ -30,24 +30,24 @@ class Events {
 
   applyGiftEvent() {
     if (this.#totalPrice >= PRICE.GIFT_MIN) {
-      this.#eventsPrice.gift = PRICE.GIFT_DISCOUNT;
+      this.#eventsDiscount.gift = PRICE.GIFT_DISCOUNT;
     }
   }
 
   applyWeekOrWeekendEvent(day, count) {
     if (day === 'weekday') {
-      this.#eventsPrice.weekday = count * PRICE.WEEKDAY_DISCOUNT;
+      this.#eventsDiscount.weekday = count * PRICE.WEEKDAY_DISCOUNT;
       return;
     }
-    this.#eventsPrice.weekend = count * PRICE.WEEKEND_DISCOUNT;
+    this.#eventsDiscount.weekend = count * PRICE.WEEKEND_DISCOUNT;
   }
 
   applySpecialEvent() {
-    this.#eventsPrice.special = PRICE.SPECIAL_DISCOUNT;
+    this.#eventsDiscount.special = PRICE.SPECIAL_DISCOUNT;
   }
 
   applyChristmasEvent(date) {
-    this.#eventsPrice.christmas =
+    this.#eventsDiscount.christmas =
       PRICE.CHRISTMAS_DISCOUNT +
       PRICE.CHRISTMAS_PER_DISCOUNT * (date - DATE.MIN);
   }
