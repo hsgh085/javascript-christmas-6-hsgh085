@@ -52,6 +52,7 @@ class EventsController {
   async applyEvents() {
     this.#events = new Events(this.#menu.getTotalPrice());
     if (!this.#events.isApplyEvent()) return;
+    this.#events.applyGiftEvent();
   }
 }
 export default EventsController;

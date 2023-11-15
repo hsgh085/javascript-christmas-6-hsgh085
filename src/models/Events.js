@@ -19,5 +19,11 @@ class Events {
   isApplyEvent() {
     return this.#totalPrice >= PRICE.EVENT_MIN;
   }
+
+  applyGiftEvent() {
+    if (this.#totalPrice >= PRICE.GIFT_MIN) {
+      this.#eventsPrice.gift = PRICE.GIFT_DISCOUNT;
+    }
+  }
 }
 export default Events;
