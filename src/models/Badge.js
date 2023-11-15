@@ -4,15 +4,15 @@ class Badge {
   #badge = '';
 
   constructor(totalBenefitPrice) {
-    if (totalBenefitPrice > BADGE.PRICE.FIRST) {
+    if (totalBenefitPrice >= BADGE.PRICE.FIRST) {
       this.#badge = BADGE.RANK.FIRST;
       return;
     }
-    if (totalBenefitPrice > BADGE.PRICE.SECOND) {
+    if (totalBenefitPrice >= BADGE.PRICE.SECOND) {
       this.#badge = BADGE.RANK.SECOND;
       return;
     }
-    if (totalBenefitPrice > BADGE.PRICE.THIRD) {
+    if (totalBenefitPrice >= BADGE.PRICE.THIRD) {
       this.#badge = BADGE.RANK.THIRD;
     }
   }
