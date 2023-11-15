@@ -30,6 +30,7 @@ class EventsController {
     this.#events.applyGiftEvent();
     this.applyWeekOrWeekendEvent();
     this.applySpecialEvent();
+    this.applyChristmasEvent();
   }
 
   showEventsApplyDetails() {
@@ -79,6 +80,12 @@ class EventsController {
   applySpecialEvent() {
     if (this.#date.isSpecialDate()) {
       this.#events.applySpecialEvent();
+    }
+  }
+
+  applyChristmasEvent() {
+    if (this.#date.isChristmasEventDate()) {
+      this.#events.applyChristmasEvent(this.#date.getDate());
     }
   }
 }

@@ -1,4 +1,4 @@
-import { PRICE } from '../constants/Constraints';
+import { DATE, PRICE } from '../constants/Constraints';
 
 class Events {
   #totalPrice;
@@ -46,6 +46,10 @@ class Events {
     this.#eventsPrice.special = PRICE.SPECIAL_DISCOUNT;
   }
 
-
+  applyChristmasEvent(date) {
+    this.#eventsPrice.christmas =
+      PRICE.CHRISTMAS_DISCOUNT +
+      PRICE.CHRISTMAS_PER_DISCOUNT * (date - DATE.MIN);
+  }
 }
 export default Events;
