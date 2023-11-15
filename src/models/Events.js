@@ -21,7 +21,11 @@ class Events {
   }
 
   getGiftCount() {
-    return this.#eventsDiscount.gift / PRICE.GIFT_DISCOUNT;
+    return this.#eventsDiscount.gift / -PRICE.GIFT_DISCOUNT;
+  }
+
+  getTotalDiscount() {
+    return Object.values(this.#eventsDiscount).reduce((acc, cur) => acc + cur);
   }
 
   isApplyEvent() {
@@ -30,24 +34,24 @@ class Events {
 
   applyGiftEvent() {
     if (this.#totalPrice >= PRICE.GIFT_MIN) {
-      this.#eventsDiscount.gift = PRICE.GIFT_DISCOUNT;
+      this.#eventsDiscount.gift -= PRICE.GIFT_DISCOUNT;
     }
   }
 
   applyWeekOrWeekendEvent(day, count) {
     if (day === 'weekday') {
-      this.#eventsDiscount.weekday = count * PRICE.WEEKDAY_DISCOUNT;
+      this.#eventsDiscount.weekday -= count * PRICE.WEEKDAY_DISCOUNT;
       return;
     }
-    this.#eventsDiscount.weekend = count * PRICE.WEEKEND_DISCOUNT;
+    this.#eventsDiscount.weekend -= count * PRICE.WEEKEND_DISCOUNT;
   }
 
   applySpecialEvent() {
-    this.#eventsDiscount.special = PRICE.SPECIAL_DISCOUNT;
+    this.#eventsDiscount.special -= PRICE.SPECIAL_DISCOUNT;
   }
 
   applyChristmasEvent(date) {
-    this.#eventsDiscount.christmas =
+    this.#eventsDiscount.christmas -=
       PRICE.CHRISTMAS_DISCOUNT +
       PRICE.CHRISTMAS_PER_DISCOUNT * (date - DATE.MIN);
   }
