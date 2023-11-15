@@ -5,8 +5,14 @@ describe('VisitDate 모델 테스트', () => {
     const date = new VisitDate(3);
     expect(date.checkWeekOrWeekend()).toBe('weekday');
   });
+
   test('주말이면 weekend를 반환한다.', () => {
     const date = new VisitDate(1);
     expect(date.checkWeekOrWeekend()).toBe('weekend');
+  });
+
+  test('특별 할인 날짜면 true를 반환한다.', () => {
+    const date = new VisitDate(3);
+    expect(date.isSpecialDate()).toBeTruthy();
   });
 });
