@@ -11,7 +11,7 @@ const OUTPUT_MESSAGE = Object.freeze({
     GIFT: '\n<증정 메뉴>',
   },
   PRICE: {
-    BEFORE: '\n<할인 전 총주문 금액>\n',
+    BEFORE: '\n<할인 전 총주문 금액>',
     BENEFIT: '\n<총혜택 금액>',
     AFTER: '\n<할인 후 예상 결제 금액>',
   },

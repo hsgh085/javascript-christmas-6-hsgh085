@@ -24,8 +24,8 @@ const OutputView = {
   },
 
   printPriceBefore(price) {
-    const formatPrice = stringUtils.formatNumberWithCommas(price);
-    Console.print(`${OUTPUT_MESSAGE.PRICE.BEFORE}${formatPrice}원`);
+    Console.print(OUTPUT_MESSAGE.PRICE.BEFORE);
+    Console.print(`${stringUtils.formatNumberWithCommas(price)}원`);
   },
 
   printGiftMenu(count) {
@@ -50,6 +50,11 @@ const OutputView = {
     });
   },
 
+  printPriceBenefit(price) {
+    Console.print(OUTPUT_MESSAGE.PRICE.BENEFIT);
+    Console.print(`${stringUtils.formatNumberWithCommas(price)}원`);
+  },
+
   printNone() {
     Console.print(OUTPUT_MESSAGE.NONE);
   },
@@ -58,7 +63,7 @@ const OutputView = {
     Console.print(
       `${
         EVENT_NAME[eventName.toUpperCase()]
-      } : -${stringUtils.formatNumberWithCommas(discountAmount)}원`,
+      } : ${stringUtils.formatNumberWithCommas(discountAmount)}원`,
     );
   },
 };
