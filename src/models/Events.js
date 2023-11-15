@@ -25,5 +25,13 @@ class Events {
       this.#eventsPrice.gift = PRICE.GIFT_DISCOUNT;
     }
   }
+
+  applyWeekOrWeekendEvent(day, count) {
+    if (day === 'weekday') {
+      this.#eventsPrice.weekday = count * PRICE.WEEKDAY_DISCOUNT;
+      return;
+    }
+    this.#eventsPrice.weekend = count * PRICE.WEEKEND_DISCOUNT;
+  }
 }
 export default Events;

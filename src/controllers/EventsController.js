@@ -49,10 +49,26 @@ class EventsController {
     }
   }
 
-  async applyEvents() {
+  applyEvents() {
     this.#events = new Events(this.#menu.getTotalPrice());
     if (!this.#events.isApplyEvent()) return;
     this.#events.applyGiftEvent();
+    this.applyWeekOrWeekendEvent();
+  }
+
+  applyWeekOrWeekendEvent() {
+    if (this.#date.checkWeekOrWeekend() === 'weekday') {
+      this.#events.applyWeekOrWeekendEvent(
+        'weekday',
+        this.#menu.getCountCategory('DESSERT'),
+      );
+    }
+    if (this.#date.checkWeekOrWeekend() === 'weekend') {
+      this.#events.applyWeekOrWeekendEvent(
+        'weekend',
+        this.#menu.getCountCategory('MAIN'),
+      );
+    }
   }
 }
 export default EventsController;
