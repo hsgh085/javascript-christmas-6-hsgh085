@@ -16,6 +16,14 @@ class Events {
     };
   }
 
+  getEventsPrice() {
+    return this.#eventsPrice;
+  }
+
+  getGiftCount() {
+    return this.#eventsPrice.gift / PRICE.GIFT_DISCOUNT;
+  }
+
   isApplyEvent() {
     return this.#totalPrice >= PRICE.EVENT_MIN;
   }

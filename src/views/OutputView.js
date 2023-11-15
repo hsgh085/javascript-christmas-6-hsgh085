@@ -26,5 +26,14 @@ const OutputView = {
     const formatPrice = stringUtils.formatNumberWithCommas(price);
     Console.print(`${OUTPUT_MESSAGE.PRICE.BEFORE}${formatPrice}원`);
   },
+
+  printGiftMenu(count) {
+    Console.print(OUTPUT_MESSAGE.MENU.GIFT);
+    if (count === 0) {
+      Console.print(OUTPUT_MESSAGE.NONE);
+      return;
+    }
+    Console.print(`${OUTPUT_MESSAGE.GIFT} ${count}개`);
+  },
 };
 export default OutputView;

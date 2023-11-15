@@ -7,6 +7,8 @@ class App {
     this.#eventsController = new EventsController();
     await this.#eventsController.order();
     this.#eventsController.showOrder();
+    this.#eventsController.applyEvents();
+    this.#eventsController.showEventsApplyDetails();
   }
 }
 

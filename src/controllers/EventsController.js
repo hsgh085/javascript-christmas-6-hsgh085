@@ -24,6 +24,17 @@ class EventsController {
     OutputView.printPriceBefore(this.#menu.getTotalPrice());
   }
 
+  applyEvents() {
+    this.#events = new Events(this.#menu.getTotalPrice());
+    if (!this.#events.isApplyEvent()) return;
+    this.#events.applyGiftEvent();
+    this.applyWeekOrWeekendEvent();
+  }
+
+  showEventsApplyDetails() {
+    OutputView.printGiftMenu(this.#events.getGiftCount());
+  }
+
   async inputVisitDate() {
     const date = await InputView.readDate();
     try {
@@ -47,13 +58,6 @@ class EventsController {
       OutputView.printErrorMessage(err.message);
       await this.inputOrderMenu();
     }
-  }
-
-  applyEvents() {
-    this.#events = new Events(this.#menu.getTotalPrice());
-    if (!this.#events.isApplyEvent()) return;
-    this.#events.applyGiftEvent();
-    this.applyWeekOrWeekendEvent();
   }
 
   applyWeekOrWeekendEvent() {
