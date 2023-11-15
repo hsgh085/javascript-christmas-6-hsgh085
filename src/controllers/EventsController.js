@@ -15,8 +15,8 @@ class EventsController {
 
   async order() {
     OutputView.printIntro();
-    await this.inputVisitDate();
-    await this.inputOrderMenu();
+    await this.#inputVisitDate();
+    await this.#inputOrderMenu();
   }
 
   showOrder() {
@@ -29,9 +29,9 @@ class EventsController {
     this.#events = new Events(this.#menu.getTotalPrice());
     if (!this.#events.isApplyEvent()) return;
     this.#events.applyGiftEvent();
-    this.applyWeekOrWeekendEvent();
-    this.applySpecialEvent();
-    this.applyChristmasEvent();
+    this.#applyWeekOrWeekendEvent();
+    this.#applySpecialEvent();
+    this.#applyChristmasEvent();
   }
 
   showEventsApplyDetails() {
@@ -46,17 +46,17 @@ class EventsController {
     OutputView.printBadge(badge.getBadge());
   }
 
-  async inputVisitDate() {
+  async #inputVisitDate() {
     const date = await InputView.readDate();
     try {
       this.#date = new VisitDate(date);
     } catch (err) {
       OutputView.printErrorMessage(err.message);
-      await this.inputVisitDate();
+      await this.#inputVisitDate();
     }
   }
 
-  async inputOrderMenu() {
+  async #inputOrderMenu() {
     const [menuArray, countArray] = await InputView.readOrderMenu();
     try {
       this.#menu = new Menu(menuArray, countArray);
@@ -67,11 +67,11 @@ class EventsController {
       );
     } catch (err) {
       OutputView.printErrorMessage(err.message);
-      await this.inputOrderMenu();
+      await this.#inputOrderMenu();
     }
   }
 
-  applyWeekOrWeekendEvent() {
+  #applyWeekOrWeekendEvent() {
     if (this.#date.checkWeekOrWeekend() === 'weekday') {
       this.#events.applyWeekOrWeekendEvent(
         'weekday',
@@ -86,13 +86,13 @@ class EventsController {
     }
   }
 
-  applySpecialEvent() {
+  #applySpecialEvent() {
     if (this.#date.isSpecialDate()) {
       this.#events.applySpecialEvent();
     }
   }
 
-  applyChristmasEvent() {
+  #applyChristmasEvent() {
     if (this.#date.isChristmasEventDate()) {
       this.#events.applyChristmasEvent(this.#date.getDate());
     }
