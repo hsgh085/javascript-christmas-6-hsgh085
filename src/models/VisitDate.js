@@ -6,7 +6,7 @@ class VisitDate {
 
   constructor(date) {
     Validation.validateDate(date);
-    this.#date = date;
+    this.#date = Number(date);
   }
 
   getDate() {
