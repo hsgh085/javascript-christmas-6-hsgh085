@@ -9,6 +9,7 @@ class App {
     this.#eventsController.showOrder();
     this.#eventsController.applyEvents();
     this.#eventsController.showEventsApplyDetails();
+    this.#eventsController.showEventBadge();
   }
 }
 

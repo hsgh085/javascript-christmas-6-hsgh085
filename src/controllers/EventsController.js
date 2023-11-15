@@ -1,3 +1,4 @@
+import Badge from '../models/Badge';
 import Events from '../models/Events';
 import Menu from '../models/Menu';
 import Validation from '../models/Validation';
@@ -38,6 +39,11 @@ class EventsController {
     OutputView.printBenefitDetails(this.#events.getEventsDiscount());
     OutputView.printPriceBenefit(this.#events.getTotalDiscount());
     OutputView.printPriceAfter(this.#events.getAfterDiscountPrice());
+  }
+
+  showEventBadge() {
+    const badge = new Badge(this.#events.getTotalDiscount());
+    OutputView.printBadge(badge.getBadge());
   }
 
   async inputVisitDate() {

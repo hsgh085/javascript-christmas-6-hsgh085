@@ -54,4 +54,18 @@ const EVENT_NAME = Object.freeze({
   GIFT: '증정 이벤트',
 });
 
-export { DATE, MENU_PRICE, MENU_CATEGORY, MENU, PRICE, EVENT_NAME };
+const BADGE = Object.freeze({
+  RANK: {
+    FIRST: '산타',
+    SECOND: '트리',
+    THIRD: '별',
+  },
+
+  PRICE: {
+    FIRST: 20000,
+    SECOND: 10000,
+    THIRD: 5000,
+  },
+});
+
+export { DATE, MENU_PRICE, MENU_CATEGORY, MENU, PRICE, EVENT_NAME, BADGE };

@@ -60,6 +60,15 @@ const OutputView = {
     Console.print(`${stringUtils.formatNumberWithCommas(price)}원`);
   },
 
+  printBadge(badge) {
+    Console.print(OUTPUT_MESSAGE.BADGE);
+    if (badge === '') {
+      this.printNone();
+      return;
+    }
+    Console.print(badge);
+  },
+
   printNone() {
     Console.print(OUTPUT_MESSAGE.NONE);
   },
