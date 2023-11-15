@@ -15,6 +15,7 @@ const OUTPUT_MESSAGE = Object.freeze({
     BENEFIT: '\n<총혜택 금액>',
     AFTER: '\n<할인 후 예상 결제 금액>',
   },
+  BENEFIT_DETAILS: '\n<혜택 내역>',
   NONE: '없음',
   GIFT: '샴페인',
 });

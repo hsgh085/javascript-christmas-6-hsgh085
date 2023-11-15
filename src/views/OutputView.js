@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import { OUTPUT_MESSAGE } from '../constants/Message';
 import stringUtils from '../utils/stringUtils';
+import { EVENT_NAME } from '../constants/Constraints';
 
 const OutputView = {
   printIntro() {
@@ -30,10 +31,35 @@ const OutputView = {
   printGiftMenu(count) {
     Console.print(OUTPUT_MESSAGE.MENU.GIFT);
     if (count === 0) {
-      Console.print(OUTPUT_MESSAGE.NONE);
+      this.printNone();
       return;
     }
     Console.print(`${OUTPUT_MESSAGE.GIFT} ${count}개`);
+  },
+
+  printBenefitDetails(events) {
+    Console.print(OUTPUT_MESSAGE.BENEFIT_DETAILS);
+    if (Object.values(events).every((discount) => discount === 0)) {
+      this.printNone();
+      return;
+    }
+    Object.entries(events).forEach(([eventName, discountAmount]) => {
+      if (discountAmount !== 0) {
+        this.printDiscountByEvent(eventName, discountAmount);
+      }
+    });
+  },
+
+  printNone() {
+    Console.print(OUTPUT_MESSAGE.NONE);
+  },
+
+  printDiscountByEvent(eventName, discountAmount) {
+    Console.print(
+      `${
+        EVENT_NAME[eventName.toUpperCase()]
+      } : -${stringUtils.formatNumberWithCommas(discountAmount)}원`,
+    );
   },
 };
 export default OutputView;
