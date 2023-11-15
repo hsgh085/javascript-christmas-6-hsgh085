@@ -9,8 +9,6 @@ class EventsController {
 
   #menu;
 
-  #categoryCount = {};
-
   #events;
 
   async order() {
@@ -40,8 +38,10 @@ class EventsController {
     try {
       this.#menu = new Menu(menuArray, countArray);
       Validation.validateMenuTotalCount(this.#menu.getTotalCount());
-      this.#categoryCount = this.#menu.getCountMenuByCategory();
-      Validation.validateOnlyBeverageMenu(this.#categoryCount);
+      Validation.validateOnlyBeverageMenu(
+        this.#menu.getTotalCount(),
+        this.#menu.getCountCategory('BEVERAGE'),
+      );
     } catch (err) {
       OutputView.printErrorMessage(err.message);
       await this.inputOrderMenu();

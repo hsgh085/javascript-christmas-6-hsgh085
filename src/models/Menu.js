@@ -20,17 +20,12 @@ class Menu {
     return Object.values(this.#menu).reduce((acc, cur) => acc + cur);
   }
 
-  getCountMenuByCategory() {
-    const categoryCount = {};
-    Object.keys(MENU_CATEGORY).forEach((category) => {
-      const categoryMenu = MENU_CATEGORY[category];
-      let categoryTotal = 0;
-      categoryMenu.forEach((menuName) => {
-        if (this.#menu[menuName]) {
-          categoryTotal += this.#menu[menuName];
-        }
-      });
-      categoryCount[category] = categoryTotal;
+  getCountCategory(category) {
+    let categoryCount = 0;
+    Object.entries(this.#menu).forEach(([menuName, count]) => {
+      if (MENU_CATEGORY[category].includes(menuName)) {
+        categoryCount += count;
+      }
     });
     return categoryCount;
   }

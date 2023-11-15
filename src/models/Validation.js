@@ -41,8 +41,8 @@ class Validation {
     }
   }
 
-  static validateOnlyBeverageMenu(categoryCount) {
-    if (Validation.isOnlyBeverageMenu(categoryCount)) {
+  static validateOnlyBeverageMenu(totalCount, beverageCount) {
+    if (totalCount === beverageCount) {
       throw new InputError(ERROR_MESSAGE.BEVERAGE);
     }
   }
@@ -70,12 +70,6 @@ class Validation {
 
   static isNaturalMenuCount(countArray) {
     return countArray.every((count) => numberUtils.isNaturalNumber(count));
-  }
-
-  static isOnlyBeverageMenu(categoryCount) {
-    return !Object.keys(categoryCount).some(
-      (category) => category !== 'BEVERAGE' && categoryCount[category] !== 0,
-    );
   }
 }
 export default Validation;
