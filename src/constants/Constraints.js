@@ -1,6 +1,20 @@
 const DATE = Object.freeze({
   MIN: 1,
   MAX: 31,
+  CHRISTMAS: 25,
+  WEEKEND: [1, 2, 8, 9, 15, 16, 22, 23, 29, 30],
+  SPECIAL: [3, 10, 17, 24, 25, 31],
+});
+
+const PRICE = Object.freeze({
+  EVENT_MIN: 10000,
+  GIFT_MIN: 120000,
+  WEEKDAY_DISCOUNT: 2023,
+  WEEKEND_DISCOUNT: 2023,
+  SPECIAL_DISCOUNT: 1000,
+  GIFT_DISCOUNT: 25000,
+  CHRISTMAS_DISCOUNT: 1000,
+  CHRISTMAS_PER_DISCOUNT: 100,
 });
 
 const MENU_PRICE = Object.freeze({
@@ -32,4 +46,4 @@ const MENU = Object.freeze({
   TOTAL_COUNT: 20,
 });
 
-export { DATE, MENU_PRICE, MENU_CATEGORY, MENU };
+export { DATE, MENU_PRICE, MENU_CATEGORY, MENU, PRICE };

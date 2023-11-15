@@ -1,3 +1,4 @@
+import Events from '../models/Events';
 import Menu from '../models/Menu';
 import Validation from '../models/Validation';
 import VisitDate from '../models/VisitDate';
@@ -46,6 +47,11 @@ class EventsController {
       OutputView.printErrorMessage(err.message);
       await this.inputOrderMenu();
     }
+  }
+
+  async applyEvents() {
+    this.#events = new Events(this.#menu.getTotalPrice());
+    if (!this.#events.isApplyEvent()) return;
   }
 }
 export default EventsController;
