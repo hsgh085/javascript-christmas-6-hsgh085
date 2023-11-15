@@ -55,6 +55,11 @@ const OutputView = {
     Console.print(`${stringUtils.formatNumberWithCommas(price)}원`);
   },
 
+  printPriceAfter(price) {
+    Console.print(OUTPUT_MESSAGE.PRICE.AFTER);
+    Console.print(`${stringUtils.formatNumberWithCommas(price)}원`);
+  },
+
   printNone() {
     Console.print(OUTPUT_MESSAGE.NONE);
   },

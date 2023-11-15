@@ -28,6 +28,14 @@ class Events {
     return Object.values(this.#eventsDiscount).reduce((acc, cur) => acc + cur);
   }
 
+  getAfterDiscountPrice() {
+    return (
+      this.#totalPrice +
+      this.getTotalDiscount() +
+      this.getGiftCount() * PRICE.GIFT_DISCOUNT
+    );
+  }
+
   isApplyEvent() {
     return this.#totalPrice >= PRICE.EVENT_MIN;
   }
