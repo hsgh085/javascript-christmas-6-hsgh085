@@ -14,14 +14,14 @@ class VisitDate {
   }
 
   checkWeekOrWeekend() {
-    if (this.#date in DATE.WEEKEND) {
+    if (DATE.WEEKEND.includes(this.#date)) {
       return 'weekend';
     }
     return 'weekday';
   }
 
   isSpecialDate() {
-    return this.#date in DATE.SPECIAL;
+    return DATE.SPECIAL.includes(this.#date);
   }
 
   isChristmasEventDate() {
