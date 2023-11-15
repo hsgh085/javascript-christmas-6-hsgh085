@@ -15,4 +15,9 @@ describe('VisitDate 모델 테스트', () => {
     const date = new VisitDate(3);
     expect(date.isSpecialDate()).toBeTruthy();
   });
+
+  test('크리스마스 이벤트 날짜면 true를 반환한다.', () => {
+    const date = new VisitDate(15);
+    expect(date.isChristmasEventDate()).toBeTruthy();
+  });
 });
