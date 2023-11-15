@@ -77,11 +77,12 @@ describe('Validation 모델 테스트', () => {
 
   test('주문 메뉴가 음료만 있다면 에러가 발생한다', () => {
     //given
-    const categoryCount = { APPETIZER: 0, MAIN: 0, DESSERT: 0, BEVERAGE: 3 };
+    const totalCount = 4;
+    const beverageCount = 4;
 
     //then
-    expect(() => Validation.validateOnlyBeverageMenu(categoryCount)).toThrow(
-      '[ERROR]',
-    );
+    expect(() =>
+      Validation.validateOnlyBeverageMenu(totalCount, beverageCount),
+    ).toThrow('[ERROR]');
   });
 });
